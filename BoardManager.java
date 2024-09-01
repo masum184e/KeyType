@@ -64,7 +64,7 @@ class BoardManager{
     }
   }
   
-  void setBoardWithBoardWordList(ArrayList<WordIndex> wordList, char[][] BoardBox){
+  void setBoardWithBoardWordList(ArrayList<Word> wordList, char[][] BoardBox){
     for(int i=0;i<wordList.size();i++){
       for(int j=0;j<wordList.get(i).word.length();j++){
         BoardBox[wordList.get(i).X][wordList.get(i).Y+j]=wordList.get(i).word.charAt(j);

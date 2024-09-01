@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 class KeyType{
   static String wordData = "wordData.txt";
@@ -13,6 +14,7 @@ class KeyType{
   public static void main(String[] args){
     Scanner getInput = new Scanner(System.in);
     BoardManager boardManager = new BoardManager(boardBox, rowSize, columnSize);
+    ArrayList<Word> boardWordList = new ArrayList<>();
 
     boardManager.gameStart();
     System.out.print("Enter Your Choice: ");
