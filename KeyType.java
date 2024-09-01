@@ -13,8 +13,12 @@ class KeyType{
 
   public static void main(String[] args){
     Scanner getInput = new Scanner(System.in);
+    FileManager fileManager = new FileManager();
+    
     BoardManager boardManager = new BoardManager(boardBox, rowSize, columnSize);
     ArrayList<Word> boardWordList = new ArrayList<>();
+
+    ArrayList<String> wordList = fileManager.readAllWordFromFile(wordData);
 
     boardManager.gameStart();
     System.out.print("Enter Your Choice: ");
