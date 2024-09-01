@@ -14,7 +14,8 @@ class KeyType{
   public static void main(String[] args){
     Scanner getInput = new Scanner(System.in);
     FileManager fileManager = new FileManager();
-    
+    WordManager wordManager= new WordManager();
+
     BoardManager boardManager = new BoardManager(boardBox, rowSize, columnSize);
     ArrayList<Word> boardWordList = new ArrayList<>();
 
@@ -24,6 +25,19 @@ class KeyType{
     System.out.print("Enter Your Choice: ");
     int choice = getInput.nextInt();
     getInput.nextLine();
-    System.out.println(choice);
+
+    boolean isGameOver = false;
+
+    while(!isGameOver){
+      wordManager.addWord(wordList, boardWordList, columnSize, rowSize, boardBox);
+      
+      boardManager.setBoardWithBoardWordList(boardWordList,boardBox);
+      boardManager.displayBoard(boardBox, rowSize, columnSize);
+
+      System.out.println("\033[32mScore: "+score+"\033[0m");
+      System.out.print("Enter Your Word: ");
+      String userInput = getInput.nextLine();
+      System.out.println(userInput);
+    }
   }
 }
