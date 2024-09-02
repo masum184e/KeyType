@@ -44,7 +44,19 @@ class KeyType{
         fileManager.writeCorrectWord(correctWord,userInput);
       }
 
-    }
-    
+      wordManager.wordDownFall(boardWordList, boardBox);
+
+      for(int i=0;i<boardWordList.size();i++)
+        if(boardWordList.get(i).X==(rowSize-1)){
+          isGameOver=true;
+          boardWordList.clear();
+        }
+      }
+
+      if(isGameOver){
+        boardManager.gameOver();
+        System.out.println("\n\n\n\033[32mYour Score: "+ score+"\033[0m");
+      }
+
   }
 }

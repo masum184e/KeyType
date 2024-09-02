@@ -41,4 +41,15 @@ class WordManager{
     return false;
   }
 
+  void wordDownFall(ArrayList<Word> boardWordList, char[][] BoardBox){
+    for(int i=0;i<boardWordList.size();i++){
+      for(int j=0;j<boardWordList.get(i).word.length();j++){
+        BoardBox[boardWordList.get(i).X][boardWordList.get(i).Y+j]=' ';
+      }
+    }
+    for(int i=0;i<boardWordList.size();i++){
+      boardWordList.get(i).X=boardWordList.get(i).X+1;
+    }
+  }
+
 }
