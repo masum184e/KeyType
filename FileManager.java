@@ -6,10 +6,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 class FileManager {
+
     ArrayList<String> readAllWordFromFile(String fileName){
         ArrayList<String> data = new ArrayList<String>();
-
         String line;
+
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while ((line = reader.readLine()) != null) {
                 data.add(line);
@@ -20,7 +21,8 @@ class FileManager {
         
         return data;
     }
-        void writeCorrectWord(String fileName, String userInput){
+    
+    void writeCorrectWord(String fileName, String userInput){
          try (BufferedWriter writter = new BufferedWriter(new FileWriter(fileName, true))) {
             writter.write(userInput+"\n");
         } catch (IOException e) {
