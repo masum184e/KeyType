@@ -26,11 +26,32 @@ class KeyType{
     int choice = getInput.nextInt();
     getInput.nextLine();
 
+    switch(choice){
+      case 1:{
+        fileManager.writeWordWithIndexForResume(boardWordList, resumeData);
+        break;
+      }
+      case 2:{
+        fileManager.readWordWithIndexForResume(boardWordList,resumeData);
+        resumeStatus=true;
+        break;
+      }
+      default: {
+        System.out.println("Invalid Output");
+      }
+    }
+
     boolean isGameOver = false;
 
     while(!isGameOver){
       wordManager.addWord(wordList, boardWordList, columnSize, rowSize, boardBox);
       
+      if(resumeStatus && !fileManager.isFileEmpty(resumeData)){
+        score=fileManager.correctWordLength(correctWord);
+        boardWordList.remove(boardWordList.size()-1);
+        resumeStatus=false;
+      }
+
       boardManager.setBoardWithBoardWordList(boardWordList,boardBox);
       fileManager.writeWordWithIndexForResume(boardWordList, resumeData);
       boardManager.displayBoard(boardBox, rowSize, columnSize);
@@ -38,6 +59,10 @@ class KeyType{
       System.out.println("\033[32mScore: "+score+"\033[0m");
       System.out.print("Enter Your Word: ");
       String userInput = getInput.nextLine();
+
+      if(userInput.equals("exit")){
+        System.exit(0);
+      }
 
       boolean wordMatchingStatus = wordManager.wordMatching(boardWordList, userInput, boardBox);
       if(wordMatchingStatus){

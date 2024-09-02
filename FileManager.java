@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 class FileManager {
 
@@ -59,6 +61,43 @@ class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }  
+    }
+
+    void readWordWithIndexForResume(ArrayList<Word> boardWordList, String fileName){
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] components = line.split("\\|");
+                Word word = new Word(components[0], Integer.parseInt(components[1]), Integer.parseInt(components[2]));
+                boardWordList.add(word);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    int correctWordLength(String fileName){
+        int lineCount = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lineCount++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lineCount;
+    }
+
+    boolean isFileEmpty(String fileName){
+        try{
+            Path path = Path.of(fileName);
+            return (Files.size(path)==0)?true:false;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
