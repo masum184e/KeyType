@@ -37,7 +37,13 @@ class KeyType{
       System.out.println("\033[32mScore: "+score+"\033[0m");
       System.out.print("Enter Your Word: ");
       String userInput = getInput.nextLine();
-      System.out.println(userInput);
+
+      boolean wordMatchingStatus = wordManager.wordMatching(boardWordList, userInput, boardBox);
+      if(wordMatchingStatus){
+        score++;
+        fileManager.writeCorrectWord(correctWord,userInput);
+      }
+
     }
   }
 }
