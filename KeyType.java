@@ -58,6 +58,9 @@ class KeyType{
       if(isGameOver){
         boardManager.gameOver();
         System.out.println("\n\n\n\033[32mYour Score: "+ score+"\033[0m");
+
+        fileManager.displayCorrectWord(correctWord);
+        fileManager.clearCorrectWordFile(correctWord);
       }
 
   }

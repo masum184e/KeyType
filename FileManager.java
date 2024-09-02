@@ -39,4 +39,26 @@ class FileManager {
             e.printStackTrace();
         }
     }
+
+    void displayCorrectWord(String fileName){
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            int count=1;
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(count+". "+line);
+                count++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void clearCorrectWordFile(String fileName){
+        try (BufferedWriter writter = new BufferedWriter(new FileWriter(fileName))) {
+            writter.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  
+    }
+
 }
