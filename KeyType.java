@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 class KeyType{
   static String wordData = "wordData.txt";
@@ -15,6 +17,7 @@ class KeyType{
     Scanner getInput = new Scanner(System.in);
     FileManager fileManager = new FileManager();
     WordManager wordManager= new WordManager();
+    Timer intervalTimer = new Timer();
 
     BoardManager boardManager = new BoardManager(boardBox, rowSize, columnSize);
     ArrayList<Word> boardWordList = new ArrayList<>();
@@ -50,6 +53,13 @@ class KeyType{
         score=fileManager.correctWordLength(correctWord);
         boardWordList.remove(boardWordList.size()-1);
         resumeStatus=false;
+      }else{
+        intervalTimer.scheduleAtFixedRate(new TimerTask(){
+          @Override
+          public void run(){
+            wordManager.addWord(wordList, boardWordList, columnSize, rowSize, boardBox);
+          }
+        }, 0, 10000);
       }
 
       boardManager.setBoardWithBoardWordList(boardWordList,boardBox);
@@ -81,6 +91,10 @@ class KeyType{
       }
 
       if(isGameOver){
+        if(intervalTimer!=null){
+          intervalTimer.cancel();
+        }
+
         boardManager.gameOver();
         System.out.println("\n\n\n\033[32mYour Score: "+ score+"\033[0m");
 
