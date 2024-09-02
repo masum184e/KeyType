@@ -23,10 +23,20 @@ class FileManager {
     }
     
     void writeCorrectWord(String fileName, String userInput){
-         try (BufferedWriter writter = new BufferedWriter(new FileWriter(fileName, true))) {
+        try (BufferedWriter writter = new BufferedWriter(new FileWriter(fileName, true))) {
             writter.write(userInput+"\n");
         } catch (IOException e) {
             e.printStackTrace();
         }       
+    }
+
+    void writeWordWithIndexForResume(ArrayList<Word> boardWordList, String fileName){
+        try (BufferedWriter writter = new BufferedWriter(new FileWriter(fileName))) {
+            for(int i=0;i<boardWordList.size();i++){
+                writter.write(boardWordList.get(i).word+"|"+boardWordList.get(i).X+"|"+boardWordList.get(i).Y+"\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

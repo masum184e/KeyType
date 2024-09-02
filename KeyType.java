@@ -32,6 +32,7 @@ class KeyType{
       wordManager.addWord(wordList, boardWordList, columnSize, rowSize, boardBox);
       
       boardManager.setBoardWithBoardWordList(boardWordList,boardBox);
+      fileManager.writeWordWithIndexForResume(boardWordList, resumeData);
       boardManager.displayBoard(boardBox, rowSize, columnSize);
 
       System.out.println("\033[32mScore: "+score+"\033[0m");
@@ -50,6 +51,7 @@ class KeyType{
         if(boardWordList.get(i).X==(rowSize-1)){
           isGameOver=true;
           boardWordList.clear();
+          fileManager.writeWordWithIndexForResume(boardWordList, resumeData);
         }
       }
 
