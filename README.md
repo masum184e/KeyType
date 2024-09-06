@@ -12,6 +12,10 @@ cd keytype
 javac KeyType.java
 java KeyType
 ```
+# Preview
+<video width="100%" height="240" controls>
+  <source src="./preview.mp4" type="video/mp4">
+</video>
 # Objectives
 <p align="justify">The primary objective of developing this word typing puzzle game is to provide players an entertaining and educational experience. It is a game that offers both enjoyment and opportunities for learning and skill development. Playing KeyType is a fun and engaging way to improve your typing speed and accuracy while challenging yourself under pressure. This fast-paced game requires you to type words quickly as they appear, testing both your reflexes and focus. With each word you type correctly, you’ll boost your score, develop better hand-eye coordination, and strengthen your muscle memory for faster, more accurate typing. Whether you're a student, professional, or simply looking to improve your skills, KeyType offers an enjoyable experience that turns learning into a game.</p>
 
